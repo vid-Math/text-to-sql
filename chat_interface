@@ -3,7 +3,7 @@ st.title("🤖 English to SQL - LangChain project")
 st.subheader("This is sqlGPT, your data analytics assistant.")#, divider='gray')
 
 from langchain_core.runnables.history import RunnableWithMessageHistory
-import demo4 as rag_arch
+import RAG_txt2sql as rag_arch
 
 # Initialize chat history
 if "messages" not in st.session_state:
