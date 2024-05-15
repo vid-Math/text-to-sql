@@ -2,6 +2,11 @@ import streamlit as st
 st.title("🤖 English to SQL - LangChain project")
 st.subheader("This is sqlGPT, your data analytics assistant.")#, divider='gray')
 
+
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 from langchain_core.runnables.history import RunnableWithMessageHistory
 import RAG_txt2sql as rag_arch
 
