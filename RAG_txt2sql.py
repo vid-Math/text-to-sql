@@ -17,10 +17,10 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders.unstructured import UnstructuredFileLoader
 
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
-
+from config import OPENAI_API_KEY
 
 llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 loader = UnstructuredFileLoader('schema_context.txt')
