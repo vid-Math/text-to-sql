@@ -1,0 +1,66 @@
+The database is supply chain schema of items, orders, bags and containers. 
+Items are in Orders. Multiple orders inside each Bag. Multiple bags inside each Container.
+Revenue is calculated by recommendedRetailPrice.
+If an item is cancelled or returned then it doesn't contribute to revenue. 
+Table and column description:
+Table: items
+Columns:
+1. itemID - unique identifier for each item (primary key)
+2. brand - brand details of the item
+3. manufacturer - manufacturer of the item
+4. customerRating - rating of the item
+5. category1 - category1 details of the item
+6. category2 - category2 details of the item
+7. category3 - category3 details of the item
+8. recommendedRetailPrice - selling price of the item
+
+Table: orders_tbl
+Description - describes orders placed by customer
+Columns:
+1. order_id - id for orders
+2. item_id - unique id for item
+3. created_on - order placed or creation date
+4. packed_on - when was order packed with all its items
+5. shipped_on - ship date or shipped date i.e. when order was shipped from source
+6. delivered_on - delivery date of order to customer
+7. last_update_on - when was the status updated 
+8. status - cancelled (order cancelled by customer), returned (order returned by customer), dlivered (delivered to customer)
+
+Table: bag_tbl
+Description - describes all the bags in the systems 
+Columns:
+1. bag_id - unique bag id
+2. order_count - number of orders placed in the bag
+3. created_on - timestamp when particular bag was created
+4. closed_on - timestamp when particular bag was closed
+5. shipped_on - timestamp when particular bag was shipped from source
+6. received_on - timestamp when particular bag was received on destination
+7. source - location from where bag was shipped
+8. destination - location where bag is to be received
+
+Table: bag_order_tbl
+Description - each row represent a bag in the system and associated orders or 
+order that are in the bag. bag_id and orders_id are foregin keys to tables bag_tbl and
+items table respectively
+Columns:
+1. bag_id - unique id for bag
+2. orders_id - order_id added to bag
+3. added_on - timestamap when the order was added to the bag
+
+Table: container_tbl
+Description - each row represent a container in the system
+Columns:
+1. container_id - unique id for container
+2. shipped_on - timestamp when the container was shipped from source location
+3. received_on - timestamp when the container was received at deatination location
+4. source - location from where container is or will be shipped
+5. destination - location where container is or will be received
+
+Table: container_bag_tbl
+Description - each row represent a container in the system and associated bag
+ that are added into the container. bag_id and container are foregin keys to tables bag_tbl 
+ and container_tbl respectively
+Columns:
+1. bag_id - bag id of bags in the container
+2. containe_id - unique id for container
+3. added_on - timestamap when the bag was added to the container
