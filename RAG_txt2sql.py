@@ -20,7 +20,9 @@ from langchain_community.document_loaders.unstructured import UnstructuredFileLo
 # from dotenv import load_dotenv
 # load_dotenv()
 
-from config import OPENAI_API_KEY
+#from config import OPENAI_API_KEY
+import streamlit as st
+OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
 
 llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 loader = UnstructuredFileLoader('schema_context.txt')
